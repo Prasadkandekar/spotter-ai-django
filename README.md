@@ -3,6 +3,11 @@
 Given a start and finish inside the USA, the API returns the driving route (GeoJSON + an HTML map),
 the cost-optimal places to fuel up (500-mile range), and the total fuel cost at 10 MPG.
 
+## 🎥 Video Demo
+
+Watch the complete walkthrough and demonstration:  
+**[📹 Loom Video Demo](https://www.loom.com/share/949f11aedab74630a8eb17ec4dd1b392)**
+
 ## Quick start
 
 ```bash
@@ -108,6 +113,8 @@ routing/
 ```
 
 ## Loom outline (5 min)
+
+**🎥 [Watch Full Video Demo on Loom](https://www.loom.com/share/949f11aedab74630a8eb17ec4dd1b392)**
 
 1. Postman: GET `/api/route/` LA to NYC, show stops and `total_fuel_cost`; open `map_url`.
 2. POST with a ZIP and a coordinate pair; show a 422 (tiny `corridor_miles`) and a 400 (non-US coordinates).
