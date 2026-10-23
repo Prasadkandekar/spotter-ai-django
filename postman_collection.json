@@ -1,0 +1,58 @@
+{
+  "info": {
+    "name": "Fuel Route Planner",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [{ "key": "base", "value": "http://localhost:8000" }],
+  "item": [
+    {
+      "name": "Route (GET) - LA to NYC",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{base}}/api/route/?start=Los Angeles, CA&finish=New York, NY",
+          "host": ["{{base}}"],
+          "path": ["api", "route", ""],
+          "query": [
+            { "key": "start", "value": "Los Angeles, CA" },
+            { "key": "finish", "value": "New York, NY" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Route (POST) - Seattle to Miami",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"start\": \"Seattle, WA\",\n  \"finish\": \"Miami, FL\"\n}" },
+        "url": { "raw": "{{base}}/api/route/", "host": ["{{base}}"], "path": ["api", "route", ""] }
+      }
+    },
+    {
+      "name": "Route (POST) - ZIP and coordinates",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"start\": \"94103\",\n  \"finish\": \"40.7128,-74.0060\",\n  \"corridor_miles\": 15\n}" },
+        "url": { "raw": "{{base}}/api/route/", "host": ["{{base}}"], "path": ["api", "route", ""] }
+      }
+    },
+    {
+      "name": "Error - non-US start (400)",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{base}}/api/route/?start=48.85,2.35&finish=Dallas, TX", "host": ["{{base}}"], "path": ["api", "route", ""],
+                 "query": [{ "key": "start", "value": "48.85,2.35" }, { "key": "finish", "value": "Dallas, TX" }] }
+      }
+    },
+    {
+      "name": "Map page (open in browser)",
+      "request": {
+        "method": "GET",
+        "url": { "raw": "{{base}}/api/route/map/?start=Chicago, IL&finish=Dallas, TX", "host": ["{{base}}"], "path": ["api", "route", "map", ""],
+                 "query": [{ "key": "start", "value": "Chicago, IL" }, { "key": "finish", "value": "Dallas, TX" }] }
+      }
+    }
+  ]
+}
